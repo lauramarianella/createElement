@@ -1,3 +1,6 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+
 let touristAttractions = [
   {
     name: "Eiffel tower",
@@ -20,3 +23,6 @@ let touristAttractions = [
     picture: "http://..."
   }
 ]
+
+
+ReactDOM.render(<h1>Laura Hola</h1>, document.getElementById('root'))

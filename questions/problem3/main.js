@@ -54,3 +54,39 @@ let sellers = [
     ]
   }
 ]
+
+//shipsFrom properties city, country
+let elemOfLocation = function (location){
+  return React.createElement("div", {}, location.city + ", " + location.country);
+}
+
+//items properties: price, description, itemid, shipsFrom
+let elemOfItem = function(item){
+  return React.createElement("div", {}, 
+    React.createElement("h3",{}, item.description)
+    ,React.createElement("div", {}, item.price + " $")
+    ,React.createElement("div",{}, "id: " + item.itemid)
+    ,"Ships from: "
+    , elemOfLocation(item.shipsFrom)   
+    );
+}
+
+//seller properties: name, location, items
+let elemOfSeller = function(seller){
+  return React.createElement("div", {},
+    React.createElement("h1", {}, seller.name),
+    React.createElement("div", {}, elemOfLocation(seller.location)),
+    seller.items.map(elemOfItem)
+  );
+}
+
+function elemOfSeller2(seller){
+  return React.createElement("div", {},
+    React.createElement("h1", {}, seller.name)
+  );
+}
+
+
+let rootDiv = document.getElementById('root');
+ReactDOM.render(sellers.map(elemOfSeller),rootDiv);
+//ReactDOM.render(sellers.map((seller) => elemOfSeller2(seller)),rootDiv);

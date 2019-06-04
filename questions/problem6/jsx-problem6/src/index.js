@@ -1,3 +1,6 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+
 let subreddits = [
   {
     name: "learnjavascript",
@@ -42,33 +45,30 @@ let subreddits = [
 
 let elemPost = function (post) {
   return (
-    React.createElement('div',{}
-      ,React.createElement('h3',{}, "name: " + post.title)
-      ,React.createElement('div',{}, "month: " + post.date.month)
-      ,React.createElement('div',{}, "year: " + post.date.year)
-      ,React.createElement('div',{}, "op: " + post.date.op)
-    )
-
+    <div>
+      <h3> name: {post.title}</h3>
+      <div> month: {post.date.month}</div>
+      <div> year: {post.date.year}</div>
+      <div> op: {post.date.op}</div>
+    </div>
   );
 }
 
 let elemModerator = function (modetator) {
   return (
-    React.createElement('div',{}
-      ,React.createElement('div',{}, "name: " + modetator.name + " nickname:" + modetator.nickname)
-    )
-
+    <div>
+      <div> name: { modetator.name } nickname: {modetator.nickname}</div>
+    </div>
   );
 }
 
 let elemLanguage = function(language) {
   return (
-    React.createElement('div',{}
-      ,React.createElement('h1',{}, language.name)
-      ,language.moderators.map(elemModerator)
-      ,language.posts.map(elemPost)
-    )
-
+    <div>
+      <h1>{language.name}</h1>
+      {language.moderators.map(elemModerator)}
+      {language.posts.map(elemPost)}
+    </div>
   );
 }
 
